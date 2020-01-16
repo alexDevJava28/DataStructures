@@ -7,6 +7,12 @@ export class Stack {
     capacity: number;
 
     constructor(capacity: number) {
+
+        if (capacity <= 0) {
+            console.log('Capacity shoul be greater than 0.');
+            return;
+        }
+
         this.stack = [];
         this.top = 0;
         this.capacity = capacity;

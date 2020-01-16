@@ -22,7 +22,6 @@ try {
 }
 
 for($i = $capacity; $i > 0; $i--) {
-    //get random number from 0 to 10000
     $randomNumber = rand(0, 10000);
     echo 'Inserting ' . $randomNumber . PHP_EOL;
     $stack->push($randomNumber);

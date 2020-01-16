@@ -11,7 +11,6 @@ console.log('Pop element from empty Stack...');
 stack.pop();
 
 for(let i = capacity; i > 0; i--) {
-    //get random number from 1 to 10000
     let randomNumber = Math.floor(Math.random() * 10000) + 1;
     console.log('Inserting ', randomNumber);
     stack.push(randomNumber);

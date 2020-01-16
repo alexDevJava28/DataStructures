@@ -2,9 +2,24 @@
 
 require_once 'Stack.php';
 
-$stack = new Stack(10, 'integer');
+$itemsType = 'integer';
+$capacity = 10;
+$stack = new Stack($capacity, $itemsType);
 
-echo 'Stack size at the beginning - ' . $stack->size();
+echo 'Stack size at the beginning - ' . $stack->size() . PHP_EOL;
+
+echo 'Inserting not ' . $itemsType . PHP_EOL;
+try {
+    $stack->push('Test');
+} catch(InvalidArgumentException $exception) {
+    echo $exception->getMessage() . PHP_EOL;
+}
+
+try {
+    echo 'Pop element ' . $stack->pop() . PHP_EOL;
+} catch(RuntimeException $exception) {
+    echo $exception->getMessage() . PHP_EOL;
+}
 
 for($i = 10; $i > 0; $i--) {
     //get random number from 0 to 10000
@@ -19,7 +34,15 @@ echo 'Pop element ' . $stack->pop() . PHP_EOL;
 
 $stack->print();
 
-echo 'Stack size at in the end - ' . $stack->size();
-
-echo 'Inserting 10001 in full Stack' . PHP_EOL;
+echo 'Inserting ' . 10001 . PHP_EOL;
 $stack->push(10001);
+
+$stack->print();
+echo 'Stack size in the end - ' . $stack->size() . PHP_EOL;
+
+try {
+    echo 'Inserting 10002 in full Stack' . PHP_EOL;
+    $stack->push(10002);
+} catch(RuntimeException $exception) {
+    echo $exception->getMessage();
+}

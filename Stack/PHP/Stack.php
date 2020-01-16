@@ -62,7 +62,7 @@ class Stack {
         }
 
         $item = $this->stack[$this->size - 1];
-        unset($this->stack[$this->size--]);
+        unset($this->stack[--$this->size]);
         return $item;
 
     }

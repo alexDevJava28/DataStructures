@@ -5,3 +5,7 @@ struct stack
     int *items;
 };
 
+struct stack* Stack(int capacity)
+{
+    
+}

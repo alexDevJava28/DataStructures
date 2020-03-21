@@ -9,7 +9,7 @@ export class Stack {
     constructor(capacity: number) {
 
         if (capacity <= 0) {
-            console.log('Capacity shoul be greater than 0.');
+            console.log('Capacity should be greater than 0.');
             return;
         }
 

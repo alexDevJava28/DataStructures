@@ -1,11 +1,21 @@
 <?php declare(strict_types = 1);
 
-class Stack {
+class Node {
 
-    protected array $stack;
-    protected int $capacity;
-    protected int $size;
-    protected string $itemType;
+    public $value;
+    public ?Node $nextNode = null;
+
+}
+
+class Queue {
+
+    public const MIN_CAPACITY = 1;
+
+    private Node $firstNode;
+    private Node $lastNode;
+    private int $capacity = self::MIN_CAPACITY;
+    private int $size = 0;
+    private string $itemType;
 
     private array $allowedItemTypes = [
         'boolean',
@@ -27,8 +37,6 @@ class Stack {
             throw new InvalidArgumentException('Please, choose the correct itemType.');
         }
 
-        $this->stack = [];
-        $this->size = 0;
         $this->capacity = $capacity;
         $this->itemType = $itemType;
 
@@ -58,46 +66,64 @@ class Stack {
 
     }
 
-    public function print(): void {
-
-        var_dump($this->stack);
-
-    }
-
-    public function push($item): void {
+    public function enqueue($item): void {
 
         if (!$this->isValidType($item)) {
             throw new InvalidArgumentException('Expecting ' . $this->itemType . ', but got ' . gettype($item) . '.');
         }
 
         if ($this->isFull()) {
-            throw new RuntimeException('The Stack is overflow. It is impossible to add new element');
+            throw new RuntimeException('The Queue is overflow. It is impossible to enqueue new element');
         }
 
-        $this->stack[] = $item;
+        $newNode = new Node();
+        $newNode->value = $item;
+
+        if ($this->isEmpty()) {
+            $this->firstNode = $newNode;
+            $this->lastNode = $newNode;
+        } else {
+            $this->lastNode->nextNode = $newNode;
+            $this->lastNode = $newNode;
+        }
+
         $this->size++;
 
     }
 
-    public function pop()  {
+    public function dequeue() {
 
         if ($this->isEmpty()) {
-            throw new RuntimeException('The Stack is empty. It is impossible to remove element.');
+            throw new RuntimeException('The Queue is empty. It is impossible to dequeue element.');
         }
 
-        $item = $this->stack[$this->size - 1];
-        unset($this->stack[--$this->size]);
+        $item = $this->firstNode->value;
+
+        $this->firstNode = $this->firstNode->nextNode;
+
+        $this->size--;
+
         return $item;
 
     }
 
-    public function peek() {
+    public function print(): void {
 
         if ($this->isEmpty()) {
-            return null;
+            echo 'The current Queue is empty.' . PHP_EOL;
         }
 
-        return $this->stack[$this->size - 1];
+        $loopNode = $this->firstNode;
+        $counter = 1;
+
+        while($loopNode !== null) {
+            
+            echo $counter . '. ' . $loopNode->value . ';' . PHP_EOL;
+
+            $loopNode = $loopNode->nextNode;
+            $counter++;
+
+        }        
 
     }
 

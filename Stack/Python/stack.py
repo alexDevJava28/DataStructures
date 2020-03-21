@@ -4,7 +4,7 @@ class Stack:
 
     def __init__(self, capacity: int):
         if capacity <= 0:
-            raise Exception('Capacity shoul be greater than 0.') 
+            raise Exception('Capacity should be greater than 0.') 
 
         self.stack: List[int] = []
         self.capacity: int = capacity

@@ -42,6 +42,8 @@ int main() {
    printf("Inserting %d\n", 10002);
    Push(10002, stack);
 
+   Clean(stack);
+
    return 0;
 
 }

@@ -16,7 +16,7 @@ Stack CreateStack(int capacity)
     
     if (capacity <= 0) 
     {
-        printf("Capacity shoul be greater than 0.\n");
+        printf("Capacity should be greater than 0.\n");
         return 0;
     }
 
@@ -91,7 +91,7 @@ void Print(Stack st)
 
     if(isEmpty(st))
     {
-        printf("The Stack is empty. It is impossible to peek element.\n");
+        printf("The Stack is empty. It is impossible to print elements.\n");
     }
     else
     {

@@ -5,12 +5,12 @@ public class Test {
     public static void main(String[] args) {
         
         int capacity = 5;
-        Stack stack = new Stack(capacity);
+        Queue<Integer> queue = new Queue<Integer>(capacity);
 
-        System.out.println("Stack size at the beginning - " + stack.size());
+        System.out.println("Queue size at the beginning - " + queue.size());
 
         try {
-            stack.pop();
+            queue.dequeue();
         } catch(NoSuchElementException exception) {
             System.out.println(exception.getMessage());
         }
@@ -18,24 +18,24 @@ public class Test {
         for(int i = capacity; i > 0; i--) {
             int randomNumber = 1 + (int) (Math.random() * 10000);
             System.out.println("Inserting " + randomNumber);
-            stack.push(randomNumber);
+            queue.enqueue(randomNumber);
         }
 
-        stack.print();
+        queue.print();
 
-        System.out.println("Pop element " + stack.pop());
+        System.out.println("Dequeue element " + queue.dequeue());
 
-        stack.print();
+        queue.print();
 
         System.out.println("Inserting 10001");
-        stack.push(10001);
+        queue.enqueue(10001);
 
-        stack.print();
-        System.out.println("Stack size in the end - " + stack.size());
+        queue.print();
+        System.out.println("Queue size in the end - " + queue.size());
 
         try {
             System.out.println("Inserting 10002");
-            stack.push(10002);
+            queue.enqueue(10002);
         } catch(StackOverflowError exception) {
             System.out.println(exception.getMessage());
         }

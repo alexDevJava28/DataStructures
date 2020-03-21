@@ -9,24 +9,31 @@ public class Stack {
     Stack(int capacity) {
 
         if(capacity <= 0) {
-            throw new IllegalArgumentException("Capacity shoul be greater than 0.");
+            throw new IllegalArgumentException("Capacity should be greater than 0.");
         }
 
         this.capacity = capacity;
         this.stack = new int[capacity];
         this.top = 0;
+
     }
 
     public int size() {
+
         return this.top;
+
     }
 
     public boolean isEmpty() {
+
         return this.size() == 0;
+
     }
 
     public boolean isFull() {
+
         return this.size() >= this.capacity;
+        
     }
 
     public void push(int item) {
